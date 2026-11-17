@@ -69,6 +69,101 @@ The upstream catalog changes; `GET /v1/models` is the live list. Some listed mod
 blocked for trial keys (403, passed straight to the client). With thinking enabled use
 `max_tokens` of 16000 or more, or the model can spend the whole limit thinking.
 
+
+## All models in the catalog (48, snapshot 2026-11)
+
+This is what `GET /v1/models` returned. Being listed does not mean a trial key can call it: amazee's team policy blocks some models, and the list changes over time. Run `curl http://127.0.0.1:8127/v1/models` for the current list.
+
+<details>
+<summary>Anthropic Claude (12)</summary>
+
+- `claude-opus-5-5`
+- `claude-sonnet-5-5`
+- `claude-haiku-5-5`
+- `claude-5-opus`
+- `claude-5-sonnet`
+- `claude-4-8-opus`
+- `claude-4-7-opus`
+- `claude-4-6-opus`
+- `claude-4-6-sonnet`
+- `claude-4-5-opus`
+- `claude-4-5-sonnet`
+- `claude-4-5-haiku`
+
+</details>
+
+<details>
+<summary>Google Gemini / Gemma (7)</summary>
+
+- `gemini-3.5-flash`
+- `gemini-3.5-flash-lite`
+- `gemini-3.1-flash-lite`
+- `gemini-2.5-flash-image`
+- `gemma-4-31b`
+- `gemma-4-26b-a4b`
+- `gemma-4-e2b`
+
+</details>
+
+<details>
+<summary>OpenAI (6)</summary>
+
+- `gpt-4.1`
+- `gpt-4.1-mini`
+- `gpt-o4-mini`
+- `gpt-oss-120b`
+- `gpt-oss-20b`
+- `gpt-4o-transcribe`
+
+</details>
+
+<details>
+<summary>Amazon Nova (4)</summary>
+
+- `nova-pro`
+- `nova-2-lite`
+- `nova-lite`
+- `nova-micro`
+
+</details>
+
+<details>
+<summary>Other chat models (10)</summary>
+
+- `glm-5-2`
+- `glm-4-7-flash`
+- `minimax-m2-5`
+- `minimax-m2-1`
+- `qwen3-235b`
+- `qwen3-32b`
+- `qwen3-coder-30b-a3b`
+- `devstral-2`
+- `pixtral-large`
+- `nvidia-nemotron-3-super-120b-a12b`
+
+</details>
+
+<details>
+<summary>Embeddings (5)</summary>
+
+- `embed-v4`
+- `embed-english`
+- `embed-multilingual`
+- `titan-embed-text-v2:0`
+- `embeddings`
+
+</details>
+
+<details>
+<summary>Task aliases (amazee/Drupal presets) (4)</summary>
+
+- `chat`
+- `chat_with_complex_json`
+- `chat_with_image_vision`
+- `text_to_image`
+
+</details>
+
 ## How keys are obtained
 
 `POST https://api.amazee.ai/auth/generate-trial-access` with header `Referer: drupal-install`,
@@ -122,3 +217,7 @@ by default need `"stream": false` from clients that expect one JSON reply.
 
 This relies on an undocumented free-trial endpoint. amazee.ai can rate-limit or close it at
 any time, and heavy minting may break their trial terms.
+
+## License
+
+MIT, see [LICENSE](LICENSE). The license covers this proxy's code only. It grants no rights to amazee.ai's service; using its trial endpoint is subject to amazee's own terms.
