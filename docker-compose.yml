@@ -1,0 +1,18 @@
+# Generic deploy. All values come from .env (see .env.example); no edits needed here.
+#   cp .env.example .env && docker compose up -d --build
+services:
+  amazee-proxy:
+    build: .
+    image: amazee-llm-proxy:local
+    restart: unless-stopped
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      AMAZEE_PROXY_HOST: 0.0.0.0
+      AMAZEE_PROXY_PORT: 8127
+      AMAZEE_PROXY_DB: /data/keys.db
+    ports:
+      - "${BIND_IP:-127.0.0.1}:${HOST_PORT:-8127}:8127"
+    volumes:
+      - ./data:/data

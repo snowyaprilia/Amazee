@@ -1,0 +1,10 @@
+.env
+data/
+*.db
+*.db-*
+*.log
+*.json
+__pycache__/
+*.pyc
+*.bak*
+.orig/
